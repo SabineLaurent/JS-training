@@ -1,27 +1,27 @@
 function duplicateEncode(word){
 
-    const upperCasedWord = transformStringToUpperCase(word);
-    const splittedCharacters = splitCharactersInArray(upperCasedWord);
+    // Count of characters occurencies
+    const upperCasedWord = word.toUpperCase();
+    const characters = upperCasedWord.split(''); // => array of characters
+    const charactersOccurency = {};
 
-    return ;
-}
+    characters.forEach(character => {
+        !charactersOccurency[character] ? charactersOccurency[character] = 1 : charactersOccurency[character] += 1;
+    });
 
-duplicateEncode("dIn");
+    console.log(upperCasedWord, characters, charactersOccurency);
 
+    // Encode string
+    let encodedString = "";
 
-// -----------------------------------------
-// Secondary fonctions
+    characters.forEach(character => {
+        charactersOccurency[character] > 1 ? encodedString += ")" : encodedString += "(";
+    });
 
-function transformStringToUpperCase(string){
-    const upperCasedString = string.toUpperCase()
-    console.log(upperCasedString);
+    console.log(encodedString);
 
-    return upperCasedString;
+    return encodedString;
+
 };
 
-function splitCharactersInArray(string){
-    const splittedString = string.split('')
-    console.log(splittedString);
-
-    return splittedString;
-}
+duplicateEncode(word);
